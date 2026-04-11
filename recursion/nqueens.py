@@ -1,34 +1,4 @@
-
-
-# def is_safe(col, row, board, n):
-#     duprow = row
-#     dupcol = col
-
-#     while row>=0 and col >= 0:
-#         if board[row][col] == 'Q':
-#             return False
-#         row -= 1
-#         col -=1
-
-#     row = duprow
-#     col = dupcol
-
-#     while col>=0:
-#         if board[row][col] == 'Q':
-#             return False
-#         col -= 1
-
-#     row = duprow
-#     col = dupcol
-    
-#     while row<n and col>=0:
-#         if board[row][col] == 'Q':
-#             return False
-#         row += 1
-#         col -= 1
-    
-#     return True 
-
+ 
 def nqueens(n):
     ans = []
     board = ['.'*n for _ in range(n)]
