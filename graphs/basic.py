@@ -14,20 +14,35 @@ adj_list = [
     [8],
 ]
 
-def bfs_traversal(adj, starting_node):
-    queue = deque([])
+# def bfs_traversal(adj, starting_node):
+#     queue = deque([])
 
-    queue.append(starting_node)
-    visited = set()
-    visited.add(starting_node)
-    result = []
-    while queue:
-        elem = queue.popleft()
-        result.append(elem)
-        for node in adj[elem]:
-            if node not in visited:
-                queue.append(node)
-                visited.add(node)
-    return result
+#     queue.append(starting_node)
+#     visited = set()
+#     visited.add(starting_node)
+#     result = []
+#     while queue:
+#         elem = queue.popleft()
+#         result.append(elem)
+#         for node in adj[elem]:
+#             if node not in visited:
+#                 queue.append(node)
+#                 visited.add(node)
+#     return result
 
-print(bfs_traversal(adj_list, 7))
+# print(bfs_traversal(adj_list, 7))
+
+def dfs_traversal(adj, node, visited, result):
+    visited.add(node)
+    result.append(node)
+
+    for i in adj[node]:
+        if i not in visited:
+            dfs_traversal(adj, i, visited, result)
+
+visited = set()
+result = []
+
+dfs_traversal(adj_list, 1, visited, result)
+
+print(result)
