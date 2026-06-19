@@ -1,7 +1,7 @@
 from collections import deque
-V = 4
-E = 4
-edges = [[0, 1], [0, 2], [1, 2], [2, 3]]
+# V = 4
+# E = 4
+# edges = [[0, 1], [0, 2], [1, 2], [2, 3]]
 
 
 # def cycle_bfs(edges, v):
@@ -35,37 +35,112 @@ edges = [[0, 1], [0, 2], [1, 2], [2, 3]]
 # print(cycle_bfs(edges, V))
 
 
+# def cycle_dfs(edges, V):
+#     adj_list = [[] for _ in range(V)]
+
+#     for a, b in edges:
+#         adj_list[a].append(b)
+#         adj_list[b].append(a)
+
+#     visited = [0]*V
+
+
+#     def helper(node, parent, visited, adj_list):
+#         visited[node] = 1
+
+#         for neighbour in adj_list[node]:
+#             if visited[neighbour] == 0:
+#                 ans = helper(neighbour, node, visited, adj_list)
+#                 if ans == True:
+#                     return True
+#             elif neighbour != parent:
+#                 return True
+        
+#         return False
+    
+#     for i in range(V):
+#         if visited[i] == 1:
+#             continue
+#         ans = helper(i, -1, visited, adj_list)
+#         if ans == True:
+#             return True
+        
+#     return False
+
+
+# print(cycle_dfs(edges, V))
+
+
+
+# V = 4
+# E = 4
+# edges = [[0, 1], [0, 2], [1, 2], [2, 3]]
+
+# def cycle_bfs(edges, V):
+#     adj_list = [[] for _ in range(V)]
+
+#     for u, v in edges:
+#         adj_list[u].append(v)
+#         adj_list[v].append(u)
+
+
+#     visited = [0]*V
+#     for i in range(V):
+#         if visited[i] == 1:
+#             continue
+#         queue = deque([])
+#         queue.append((i, -1))
+#         visited[0] = 1
+
+#         while queue:
+#             node, parent = queue.popleft()
+
+#             for neighbour in adj_list[node]:
+#                 if visited[neighbour] == 0:
+#                     queue.append((neighbour, node))
+#                     visited[neighbour] = 1
+                
+#                 elif neighbour != parent:
+#                     return True
+    
+#     return False
+
+# print(cycle_bfs(edges, V))
+
+
+V = 4
+E = 4
+edges = [[0, 1], [0, 2], [1, 2], [2, 3]]
+
+# through DFS
+
 def cycle_dfs(edges, V):
     adj_list = [[] for _ in range(V)]
 
-    for a, b in edges:
-        adj_list[a].append(b)
-        adj_list[b].append(a)
+    for u,v in edges:
+        adj_list[u].append(v)
+        adj_list[v].append(u)
 
     visited = [0]*V
 
-
-    def helper(node, parent, visited, adj_list):
+    def helper(node, parent):
         visited[node] = 1
 
         for neighbour in adj_list[node]:
             if visited[neighbour] == 0:
-                ans = helper(neighbour, node, visited, adj_list)
+                ans = helper(neighbour, node)
                 if ans == True:
                     return True
+            
             elif neighbour != parent:
                 return True
-        
-        return False
     
     for i in range(V):
         if visited[i] == 1:
             continue
-        ans = helper(i, -1, visited, adj_list)
+        ans = helper(i, -1)
         if ans == True:
             return True
-        
     return False
-
 
 print(cycle_dfs(edges, V))
