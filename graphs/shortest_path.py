@@ -11,21 +11,21 @@ def shortest_path(edges, V, src):
         adj_list[u].append(v)
         adj_list[v].append(u)
     
-    visited = [0]*V
+    # visited = [0]*V
     distance = [-1]*V
 
     queue = deque([])
-    queue.append((src, 0))
-    visited[src] = 1
+    queue.append(src)
+    # visited[src] = 1
     distance[src] = 0
 
     while queue:
-        node, dist = queue.popleft()
+        node = queue.popleft()
         for neighbour in adj_list[node]:
-            if visited[neighbour] == 0:
-                distance[neighbour] = dist+1
-                visited[neighbour] = 1
-                queue.append((neighbour, dist+1))
+            if distance[neighbour] == -1:
+                distance[neighbour] = distance[node]+1
+                # visited[neighbour] = 1
+                queue.append(neighbour)
 
     return distance
 
