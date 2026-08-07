@@ -17,8 +17,10 @@ def decode_string(s):
             # removes the '['
             stack.pop()
 
+            # multiplies the string by the number
             string = string*int(numStack.pop())
 
+            # add back to the stack
             while string:
                 stack.append(string.pop())
         else:
