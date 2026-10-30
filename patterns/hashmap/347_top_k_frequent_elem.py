@@ -24,3 +24,19 @@ def top_frequent_elem(nums, k):
 
 
 print(top_frequent_elem(nums, k))
+
+
+# approach 2 HashMap + Sorting
+
+# def top_frequent_elem_way2(nums, k):
+#     my_dict = {}
+#     for num in nums:
+#         my_dict[num] = my_dict.get(num, 0) + 1
+
+#     result = []
+#     for keys, values in my_dict.items():
+#         result.append([values, keys])
+#     result.sort(reverse=True)
+#     ans = result[:k]
+
+#     return [keys for values, keys in ans]
