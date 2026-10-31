@@ -12,3 +12,18 @@ def remove_element(nums, val):
     return k
 
 print(remove_element(nums, val))
+
+
+def removeElement(self, nums: list[int], val: int) -> int:
+    left = 0
+    right = len(nums)-1
+    while left <=right:
+        if nums[right] == val:
+            right -= 1
+        elif nums[left] != val:
+            left += 1
+        else:
+            nums[left], nums[right] = nums[right], nums[left]
+            right -= 1
+            left += 1
+    return left
