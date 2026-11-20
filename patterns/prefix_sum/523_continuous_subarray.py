@@ -1,4 +1,4 @@
-nums = [5,0,0,0]
+nums = [5,0,5,0]
 k = 3
 
 def checkSubarraySum(nums, k):
