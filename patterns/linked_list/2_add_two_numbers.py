@@ -11,7 +11,7 @@ class Solution:
         carry = 0
         newNode = dummy
 
-        while curr1 or curr2:
+        while curr1 or curr2 or carry > 0:
             val1 = curr1.val if curr1 else 0
             val2 = curr2.val if curr2 else 0
 
